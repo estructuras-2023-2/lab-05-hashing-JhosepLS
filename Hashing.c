@@ -37,3 +37,15 @@ void insert(HashTable* ht, int x) {
     newNode->next = ht->bucket[index];
     ht->bucket[index] = newNode;
 }
+
+bool find(HashTable* ht, int x) {
+    int index = ht->hashFunc(x);
+    Node* temp = ht->bucket[index];
+    while(temp) {
+        if(temp->data == x) {
+            return true;
+        }
+        temp = temp->next;
+    }
+    return false;
+}
