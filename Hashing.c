@@ -21,3 +21,12 @@ Node* createNode(int data) {
     newNode->next = NULL;
     return newNode;
 }
+
+HashTable* createHashTable(int (*hashFunc)(int)) {
+    HashTable* ht = (HashTable*)malloc(sizeof(HashTable));
+    for(int i = 0; i < BUCKET_SIZE; i++) {
+        ht->bucket[i] = NULL;
+    }
+    ht->hashFunc = hashFunc;
+    return ht;
+}
