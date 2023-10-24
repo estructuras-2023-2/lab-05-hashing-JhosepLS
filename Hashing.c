@@ -68,3 +68,11 @@ void delete(HashTable* ht, int x) {
         temp = temp->next;
     }
 }
+
+int mi_Mod(int x) {
+    return x % BUCKET_SIZE;
+}
+
+int randomFn(int x) {
+    return rand() % BUCKET_SIZE;
+}
