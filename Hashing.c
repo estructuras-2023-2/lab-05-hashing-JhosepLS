@@ -76,3 +76,21 @@ int mi_Mod(int x) {
 int randomFn(int x) {
     return rand() % BUCKET_SIZE;
 }
+
+int main() {
+    srand(time(NULL));
+
+    HashTable* ht = createHashTable(mi_Mod);
+    int x = 1234567;
+    insert(ht, x);
+    printf("Element %d found: %d\n", x, find(ht, x));
+
+    ht = createHashTable(randomFn);
+    insert(ht, x);
+    printf("Element %d found: %d\n", x, find(ht, x));
+
+    printf("Random number for 52: %d\n", randomFn(52));
+    printf("Random number for 3235235: %d\n", randomFn(3235235));
+
+    return 0;
+}
