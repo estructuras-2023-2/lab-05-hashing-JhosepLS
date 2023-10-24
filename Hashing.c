@@ -49,3 +49,22 @@ bool find(HashTable* ht, int x) {
     }
     return false;
 }
+
+void delete(HashTable* ht, int x) {
+    int index = ht->hashFunc(x);
+    Node* temp = ht->bucket[index];
+    Node* prev = NULL;
+    while(temp) {
+        if(temp->data == x) {
+            if(prev) {
+                prev->next = temp->next;
+            } else {
+                ht->bucket[index] = temp->next;
+            }
+            free(temp);
+            return;
+        }
+        prev = temp;
+        temp = temp->next;
+    }
+}
