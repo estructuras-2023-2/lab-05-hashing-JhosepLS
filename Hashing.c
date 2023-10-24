@@ -30,3 +30,10 @@ HashTable* createHashTable(int (*hashFunc)(int)) {
     ht->hashFunc = hashFunc;
     return ht;
 }
+
+void insert(HashTable* ht, int x) {
+    int index = ht->hashFunc(x);
+    Node* newNode = createNode(x);
+    newNode->next = ht->bucket[index];
+    ht->bucket[index] = newNode;
+}
