@@ -9,3 +9,8 @@ typedef struct Node {
     int data;
     struct Node* next;
 } Node;
+
+typedef struct HashTable {
+    Node* bucket[BUCKET_SIZE];
+    int (*hashFunc)(int);
+} HashTable;
